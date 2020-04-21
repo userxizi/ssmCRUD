@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--    -->
+    <context id="my" targetRuntime="MyBatis3">
+        <!--  配置不生成配置  -->
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--  配置数据库连接信息  -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/ssm"
+                userId="root"
+                password="123456"/>
+
+        <!--  指定javaBean的生成位置  -->
+        <javaModelGenerator targetPackage="zrx.crud.bean"
+                            targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--  指定sql映射文件的位置的生成位置  -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--  指定dao接口的位置的生成位置  -->
+        <javaClientGenerator targetPackage="zrx.crud.dao"
+                             targetProject=".\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--  指定sql每个表的生成策略  -->
+        <table tableName="tbl_emp" domainObjectName="Employee"></table>
+        <table tableName="ten_dept" domainObjectName="Department"></table>
+    </context>
+</generatorConfiguration>
